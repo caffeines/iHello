@@ -1,15 +1,18 @@
 from .client import db
 from datetime import datetime
+from sqlalchemy.dialects.postgresql import UUID
 
 UUID_LEN = 40
 CONTACT_LEN = 20
 
 
 class User(db.Model):
-    id = db.Column(db.String(UUID_LEN), primary_key=True)
+    __tablename__ = "users"
+
+    id = db.Column(UUID(as_uuid=True), primary_key=True)
     username = db.Column(db.String(CONTACT_LEN), unique=True, nullable=False)
     name = db.Column(db.String(70), nullable=False)
-    password = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.String(500), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     def __repr__(self):
@@ -17,7 +20,9 @@ class User(db.Model):
 
 
 class Message(db.Model):
-    id = db.Column(db.String(UUID_LEN), primary_key=True)
+    __tablename__ = "messages"
+
+    id = db.Column(UUID(as_uuid=True), primary_key=True)
     sender_id = db.Column(db.String(UUID_LEN), nullable=False)
     recipient_id = db.Column(db.String(UUID_LEN), nullable=False)
     message = db.Column(db.Text, nullable=False)
@@ -32,8 +37,10 @@ class Message(db.Model):
         )
 
 
-class Contacts(db.Model):
-    id = db.Column(db.String(UUID_LEN), primary_key=True)
+class Contact(db.Model):
+    __tablename__ = "contacts"
+
+    id = db.Column(UUID(as_uuid=True), primary_key=True)
     user_id = db.Column(db.String(UUID_LEN), nullable=False)
     contact = db.Column(db.String(CONTACT_LEN), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)

@@ -1,12 +1,9 @@
-from wsgi import App
+from server.wsgi import App
+from server.apis import api_blueprint
 import config
 
 app = App().get_app()
-
-
-@app.route("/")
-def index():
-    return {"message": "ok"}
+app.register_blueprint(api_blueprint)
 
 
 if __name__ == "__main__":

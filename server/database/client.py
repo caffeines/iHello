@@ -1,4 +1,4 @@
-from wsgi import App
+from server.wsgi import App
 from flask_sqlalchemy import SQLAlchemy
 import config
 
