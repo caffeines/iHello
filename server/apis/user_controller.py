@@ -1,28 +1,42 @@
 import sqlalchemy.exc
+from flask import Blueprint
 from flask_restful import Resource, Api, reqparse
 from ..data import user as user_data
 from ..utils.password import check_password
 from ..schema.user import user_schema, users_schema
+from ..utils import validator
 
 api = Api()
 
 register_parser = reqparse.RequestParser()
 register_parser.add_argument(
-    "username", required=True, type=str, help="Username can not be empty"
+    "username",
+    required=True,
+    type=validator.str_min_length(3, "username"),
+    location="body",
 )
 register_parser.add_argument(
-    "name", required=True, type=str, help="Name can not be empty"
+    "name", required=True, type=validator.str_min_length(3, "name"), location="body"
 )
 register_parser.add_argument(
-    "password", required=True, type=str, help="Password can not be empty"
+    "password",
+    required=True,
+    type=validator.str_min_length(6, "password"),
+    location="body",
 )
 
 login_parser = reqparse.RequestParser()
 login_parser.add_argument(
-    "username", required=True, type=str, help="Username can not be empty"
+    "username",
+    required=True,
+    type=validator.str_min_length(3, "username"),
+    location="body",
 )
 login_parser.add_argument(
-    "password", required=True, type=str, help="Password can not be empty"
+    "password",
+    required=True,
+    type=validator.str_min_length(6, "password"),
+    location="body",
 )
 
 
@@ -62,8 +76,3 @@ class Profile(Resource):
     def get(self):
         user = user_data.get_by_username("sadat")
         return user
-
-
-api.add_resource(Register, "/user/register/")
-api.add_resource(Login, "/user/login/")
-api.add_resource(Profile, "/user/profile/<username>/")

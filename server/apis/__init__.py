@@ -1,5 +1,6 @@
 from flask import Blueprint
-from .user_controller import api as user_api
+from .routes.user import user_blueprint
 
 api_blueprint = Blueprint("apis", "iHello", url_prefix="/v1")
-user_api.init_app(api_blueprint)
+
+api_blueprint.register_blueprint(user_blueprint)
