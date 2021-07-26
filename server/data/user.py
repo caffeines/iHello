@@ -27,3 +27,11 @@ def get_by_username(username: str):
         return user
     except sqlalchemy.exc.SQLAlchemyError as e:
         raise e
+
+
+def get_by_id(user_id: str):
+    try:
+        user = User.query.filter_by(id=user_id).first()
+        return user
+    except sqlalchemy.exc.SQLAlchemyError as e:
+        raise e
