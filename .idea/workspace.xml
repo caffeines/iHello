@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0df4d845-d1d7-4489-b581-a77b1cf9215c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/data/message.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/schema/message.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/socket_lib/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/socket_lib/message.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/socket_lib/setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/utils/jwt_helper.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/utils/jwt_helper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/data/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/data/message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/socket_lib/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/socket_lib/message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

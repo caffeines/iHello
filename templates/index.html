@@ -20,21 +20,23 @@ $(document).ready(function() {
 	});
 
 	socket.on('message', function(msg) {
-		$("#messages").append('<li>'+msg+'</li>');
-		console.log('Received message');
+		$("#messages").append('<li>'+msg.message+'</li>');
+		console.log('Received message: ', msg);
 	});
 
 	$('#sendbutton').on('click', function() {
 	    console.log("msg: ", {"message": $('#myMessage').val()})
 	    const msg = {
 	        "message": $('#myMessage').val(),
-	        "recipient": "8801710027633",
+	        "recipient": "8801710027638",
 	    }
 		socket.emit("message", msg, (ack) => {
 		    console.log(ack);
-		    $("#messages").append('<li>'+msg.message+'</li>');
+				if (ack.code === 200) {
+					$("#messages").append('<li>'+msg.message+'</li>');
+					$('#myMessage').val('');
+				}
 		});
-		$('#myMessage').val('');
 	});
 
 });
