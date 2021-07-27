@@ -19,4 +19,4 @@ class MessageSchema(ma.Schema):
 
 
 message_schema = MessageSchema()
-Messages_schema = MessageSchema(many=True)
+messages_schema = MessageSchema(many=True)
