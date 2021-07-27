@@ -22,15 +22,19 @@ def create(sender_id: str, recipient_id: str, message: str):
         raise e
 
 
-def get_by_user_id(user_id: str):
+def get_by_user_id(user_id: str, page=1):
     try:
+        if page <= 1:
+            page = 1
+        per_page = 10
         messages = (
             db.session.query(Message)
+            .order_by(Message.created_at.desc())
             .filter(or_(Message.recipient_id == user_id, Message.sender_id == user_id))
-            .all()
+            .paginate(per_page=per_page, page=page, error_out=False)
         )
         db.session.commit()
-        return messages
+        return messages.items
     except sqlalchemy.exc.SQLAlchemyError as e:
         raise e
 
