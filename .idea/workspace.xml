@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="16240376-c4e6-4193-885b-992a0f648fa2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/utils/jwt_helper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/apis/contacts_controller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/apis/routes/contacts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/data/contact.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/schema/contact.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/apis/routes/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/routes/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/apis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/apis/user_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/user_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/data/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/data/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/models.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +25,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1vnHAz6Ty9LzLr1MGDiXXtwa5nc" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />

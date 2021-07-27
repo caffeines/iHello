@@ -3,34 +3,26 @@ from ..utils.jwt_helper import create_jwt
 from flask_restful import Resource, Api, reqparse
 from ..data import user as user_data
 from ..utils.password import check_password
-from ..schema.user import user_schema, users_schema
+from ..schema.user import user_schema
 from ..utils import validator
-from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
+from flask_jwt_extended import jwt_required, get_jwt_identity
 
 api = Api()
 
 register_parser = reqparse.RequestParser()
 register_parser.add_argument(
-    "username",
-    required=True,
-    type=validator.str_min_length(3, "username"),
-    location="body",
+    "username", required=True, type=validator.str_min_length(3, "username")
 )
 register_parser.add_argument(
-    "name", required=True, type=validator.str_min_length(3, "name"), location="body"
+    "name", required=True, type=validator.str_min_length(3, "name")
 )
 register_parser.add_argument(
-    "password",
-    required=True,
-    type=validator.str_min_length(6, "password"),
-    location="body",
+    "password", required=True, type=validator.str_min_length(6, "password")
 )
 
 login_parser = reqparse.RequestParser()
 login_parser.add_argument(
-    "username",
-    required=True,
-    type=validator.str_min_length(3, "username"),
+    "username", required=True, type=validator.str_min_length(3, "username")
 )
 login_parser.add_argument(
     "password", required=True, type=validator.str_min_length(6, "password")
@@ -46,7 +38,7 @@ class Register(Resource):
             )
             return user_schema.jsonify(new_user)
 
-        except sqlalchemy.exc.IntegrityError as e:
+        except sqlalchemy.exc.IntegrityError:
             return {"message": "User already exist"}, 409
         except sqlalchemy.exc.SQLAlchemyError as e:
             return {"message": "Something went wrong"}, 500
