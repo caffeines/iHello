@@ -18,3 +18,11 @@ def create(contact: str, user_id: str, name=""):
     except sqlalchemy.exc.SQLAlchemyError as e:
         db.session.rollback()
         raise e
+
+
+def get_by_user_id(user_id: str):
+    try:
+        contacts = Contact.query.filter_by(user_id=user_id, is_deleted=False).all()
+        return contacts
+    except sqlalchemy.exc.SQLAlchemyError as e:
+        return e

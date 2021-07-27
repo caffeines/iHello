@@ -8,6 +8,8 @@ app.config["JWT_SECRET_KEY"] = config.JWT_SECRET_KEY
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = datetime.timedelta(
     days=config.JWT_ACCESS_TOKEN_EXPIRES
 )
+app.config["JWT_TOKEN_LOCATION"] = ["headers", "cookies", "query_string"]
+
 jwt_manager = JWTManager(app)
 
 

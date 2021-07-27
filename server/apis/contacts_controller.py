@@ -3,7 +3,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask_restful import Resource, Api, reqparse
 from ..utils.validator import str_min_length
 from ..data import contact
-from ..schema.contact import contact_schema
+from ..schema.contact import contact_schema, contacts_schema
 
 contacts_api = Api()
 
@@ -32,5 +32,7 @@ class Create(Resource):
     def get(self):
         try:
             user_id = get_jwt_identity()
+            contacts = contact.get_by_user_id(user_id)
+            return contacts_schema.dump(contacts)
         except sqlalchemy.exc.SQLAlchemyError:
             return {"message": "Something went wrong"}, 500

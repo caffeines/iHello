@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Chat Room</title>
+<script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+$(document).ready(function() {
+
+	const socket = io("ws://localhost:5010", {
+        transports: ["websocket"],
+        query: {
+            "jwt": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTYyNzM1NjI2OCwianRpIjoiOWE0OTliMWEtZGZiZS00NGNlLTg3NzctNjJmNWY3Y2IyMGJhIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6ImM5MTU3N2E2LWIzY2EtNGFkZS1hODY0LTAwNTIwMmE5NzM2ZiIsIm5iZiI6MTYyNzM1NjI2OCwiZXhwIjoxNjI5OTQ4MjY4LCJhdWQiOiJwdWJsaWMifQ.UaDWCNNJ94gWaVi9zU1XJ192W6XoHj32O7YmWyhaxoY"
+        },
+    });
+
+	socket.on('connect', function() {
+		console.log('User has connected!')
+	});
+
+	socket.on('message', function(msg) {
+		$("#messages").append('<li>'+msg+'</li>');
+		console.log('Received message');
+	});
+
+	$('#sendbutton').on('click', function() {
+	    console.log("msg: ", {"message": $('#myMessage').val()})
+	    const msg = {
+	        "message": $('#myMessage').val(),
+	        "recipient": "8801710027633",
+	    }
+		socket.emit("message", msg, (ack) => {
+		    console.log(ack);
+		    $("#messages").append('<li>'+msg.message+'</li>');
+		});
+		$('#myMessage').val('');
+	});
+
+});
+</script>
+<ul id="messages"></ul>
+<input type="text" id="myMessage">
+<button id="sendbutton">Send</button>
+</body>
+</html>
