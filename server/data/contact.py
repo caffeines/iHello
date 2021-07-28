@@ -26,3 +26,11 @@ def get_by_user_id(user_id: str):
         return contacts
     except sqlalchemy.exc.SQLAlchemyError as e:
         return e
+
+
+def get_by_contact(contact: str, user_id: str):
+    try:
+        ret = Contact.query.filter_by(contact=contact, user_id=user_id).first()
+        return ret
+    except sqlalchemy.exc.SQLAlchemyError as e:
+        raise e

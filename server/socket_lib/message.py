@@ -2,8 +2,9 @@ from flask_socketio import send, join_room
 from flask_jwt_extended import jwt_required, get_jwt_identity
 import sqlalchemy.exc
 from ..data import user
+from ..data import contact
 from ..socket_lib import socketio
-import server.data.message as message_dao
+from ..data import message
 
 
 @socketio.on("connect")
@@ -30,7 +31,7 @@ def deliver_message(data):
     try:
         message_id = data["message_id"]
         recipient_id = get_jwt_identity()
-        delivered = message_dao.set_delivered_at(message_id, recipient_id)
+        delivered = message.set_delivered_at(message_id, recipient_id)
         return dict(code=200, data=delivered)
     except TypeError as e:
         print(e)
@@ -50,8 +51,10 @@ def handle_message(msg):
         recipient = user.get_by_username(msg["recipient"])
         if recipient is None:
             return dict(code=404, error="User not registered")
-        # TODO: Add contact checker
-        new_message = message_dao.create(
+        con = contact.get_by_contact(contact=recipient.username, user_id=user_id)
+        if con is None:
+            return dict(code=422, error="Recipient is not in your contact")
+        new_message = message.create(
             sender_id=user_id, recipient_id=recipient.id, message=msg["message"]
         )
         response = {
@@ -67,6 +70,7 @@ def handle_message(msg):
         print(e)
         return dict(code=400, error="Invalid message request data")
     except sqlalchemy.exc.SQLAlchemyError as e:
+        print(e)
         return dict(code=500, error="Database query failed")
     except Exception as e:
         print(e)
