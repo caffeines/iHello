@@ -2,7 +2,7 @@
 
 A Simple Messaging Application Server
 
-## Prerequisit
+## Prerequisite
 + Python 3.7
 + Postgresql
 
@@ -10,7 +10,9 @@ A Simple Messaging Application Server
 
 ```
 $ git clone https://github.com/caffeines/iHello
-$ cp example.env .env
+$ cp example.env .env # make necessary changes
+$ python3 -m venv venv  # if not already created
+$ source venv/bin/activate
 $ pip3 install -r requirements.txt
 $ python3
 $ import server.database.models

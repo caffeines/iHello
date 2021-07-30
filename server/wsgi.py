@@ -11,7 +11,5 @@ class App:
         return App.__instance
 
     def __init__(self):
-        if App.__instance is not None:
-            pass
-        else:
+        if not App.__instance:
             App.__instance = Flask("iHello")

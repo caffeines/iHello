@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0df4d845-d1d7-4489-b581-a77b1cf9215c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/example.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/data/contact.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/data/contact.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/apis/message_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/apis/message_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/database/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/database/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/socket_lib/message.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/socket_lib/message.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/wsgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +34,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />

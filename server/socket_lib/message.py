@@ -26,7 +26,7 @@ def test_disconnect():
 
 @socketio.on("deliver_message")
 @jwt_required()
-def deliver_message(data):
+def deliver_message(data) -> dict:
     print("message was received: ", data)
     try:
         message_id = data["message_id"]
@@ -51,8 +51,8 @@ def handle_message(msg):
         recipient = user.get_by_username(msg["recipient"])
         if recipient is None:
             return dict(code=404, error="User not registered")
-        con = contact.get_by_contact(contact=recipient.username, user_id=user_id)
-        if con is None:
+        is_exist = contact.get_by_contact(contact=recipient.username, user_id=user_id)
+        if is_exist is None:
             return dict(code=422, error="Recipient is not in your contact")
         new_message = message.create(
             sender_id=user_id, recipient_id=recipient.id, message=msg["message"]

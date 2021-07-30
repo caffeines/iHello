@@ -17,7 +17,7 @@ class Messages(Resource):
             args = message_parser.parse_args()
             user_id = get_jwt_identity()
             messages = message.get_by_user_id(user_id, args["page"])
-            return messages_schema.dump(messages)
+            return messages_schema.dump(messages), 200
         except sqlalchemy.exc.SQLAlchemyError as e:
             print(e)
             return {"message": "Something went wrong"}, 500

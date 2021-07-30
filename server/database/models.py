@@ -2,7 +2,6 @@ from .client import db
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import UUID
 
-UUID_LEN = 40
 CONTACT_LEN = 20
 
 
